@@ -8,8 +8,9 @@ meteor-platform
 autopublish
 insecure
 coffeescript
-aldeed:autoform
 aldeed:collection2
 mizzao:bootstrap-3
 accounts-ui
 accounts-password
+yogiben:admin
+iron:router

@@ -1,6 +1,6 @@
 
 
-<body>
+<template name="home">
 	<div class="container">
 	{{>loginButtons}}
 		{{#if currentUser}}
@@ -12,11 +12,15 @@
 			<div class="alert alert-danger" role="alert">You must be logged in</div>
 		{{/if}}
 	</div>
-</body>
+</template>
 
 <template name="new_entry_form">
 	
-	{{>quickForm id="new_entry_form" collection="TrainingUnits" type="insert" omitFields="userId,date"}}
+	{{#autoForm id="new_entry_form" collection="TrainingUnits" type="insert" 
+	}}
+	{{>afQuickField name="weight"}}
+	{{>afQuickField name="exercise" options=exerciseOptions}}
+	{{/autoForm}}
 	
 </template>
 
@@ -24,7 +28,7 @@
 <template name="trainingsList">
 	<table class="table">
 		<thead>
-			<th>Date</th><th>Weight</th><th>Exercise</th><th>userId</th>
+			<th>Date</th><th>Weight</th><th>Exercise</th>
 		</thead>
 		<tbody>
 			{{#each entries}}
@@ -32,7 +36,7 @@
 				<td>{{date}}</td>
 				<td>{{weight}}</td>
 				<td>{{exercise}}</td>
-				<td>{{userId}}</td>
+			
 			</tr>
 			{{/each}}
 		</tbody>

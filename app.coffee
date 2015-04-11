@@ -1,5 +1,5 @@
 @TrainingUnits = new Meteor.Collection "trainingUnits"
-
+@Exercises = new Meteor.Collection "exercises"
 
 TrainingUnits.attachSchema new SimpleSchema
 	
@@ -19,7 +19,19 @@ TrainingUnits.attachSchema new SimpleSchema
 		label: "User"
 		autoValue: -> 
 			Meteor.userId()
-		#autoform:
-		#	options: ->
-		#		_.map Meteor.users.find(), (user) ->
-		#			value: user._id, label: user.email
+		
+Exercises.attachSchema new SimpleSchema
+	name: 
+		type: String
+		label: "Name"
+	description:
+		type: String
+		label: "description"
+		autoform: 
+			rows: 10
+
+@AdminConfig = 
+	name: 'My App'
+	adminEmails: ['macrozone@gmail.com']
+	collections:
+		Exercises: {}
